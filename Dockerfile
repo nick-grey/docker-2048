@@ -1,11 +1,16 @@
-FROM alpine:latest
+## BUILDING
+##   (from project root directory)
+##   $ docker build -t nick-grey-docker-2048 .
+##
+## RUNNING
+##   $ docker run nick-grey-docker-2048
 
-MAINTAINER alex <alexwhen@gmail.com> 
+FROM gcr.io/stacksmith-images/debian:wheezy-r07
 
-RUN apk --update add nginx
+MAINTAINER Bitnami <containers@bitnami.com>
 
-COPY 2048 /usr/share/nginx/html
+ENV STACKSMITH_STACK_ID="6jtqgv0" \
+    STACKSMITH_STACK_NAME="nick-grey/docker-2048" \
+    STACKSMITH_STACK_PRIVATE="1"
 
-EXPOSE 80
-
-CMD ["nginx", "-g", "daemon off;"]
+## STACKSMITH-END: Modifications below this line will be unchanged when regenerating
